@@ -4,7 +4,7 @@ class Solution(object):
 
     def climbStairs(self, n):
         if self.steps[n] != -1:
-            return steps[n]
+            return self.steps[n]
 
         if n < 1:
             return 0
