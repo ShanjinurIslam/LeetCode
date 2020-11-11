@@ -1,4 +1,3 @@
-using System.Collections.Generic;
 /**
  * Definition for singly-linked list.
  * public class ListNode {
@@ -37,37 +36,33 @@ public class Solution {
         {
             if (listNode1 == null && listNode2!=null)
             {
-                list.Add(listNode2.val);
+                this.Insert(listNode2.val);
                 listNode2 = listNode2.next;
             }
             else if(listNode2 == null && listNode1 != null)
             {
-                list.Add(listNode1.val);
+                this.Insert(listNode1.val);
                 listNode1 = listNode1.next;
             }
             else
             {
-                if (listNode1.val <= listNode2.val)
+                if (listNode1.val < listNode2.val)
                 {
-                    list.Add(listNode1.val);
-                    list.Add(listNode2.val);
+                    this.Insert(listNode1.val);
+                    listNode1 = listNode1.next;
+                }
+                else if(listNode1.val > listNode2.val){
+                    this.Insert(listNode2.val);
+                    listNode2 = listNode2.next;
                 }
                 else
                 {
-                    list.Add(listNode2.val);
-                    list.Add(listNode1.val);
+                    this.Insert(listNode2.val);
+                    this.Insert(listNode1.val);
+                    listNode1 = listNode1.next;
+                    listNode2 = listNode2.next;
                 }
-
-                listNode1 = listNode1.next;
-                listNode2 = listNode2.next;
             }
-        }
-
-        list.Sort();
-
-        for(int i = 0; i < list.Count; i++)
-        {
-            this.Insert(list[i]);
         }
         
         return this.head; 
