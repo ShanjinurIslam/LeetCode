@@ -23,3 +23,36 @@ class Solution2(object):
                 h[num] = i
             else:
                 return [h[n], i]
+
+class Solution(object):
+    def twoSum(self, nums, target):
+        index = dict()
+        
+        for i,each in enumerate(nums):
+            if each in index:
+                index[each].append(i)
+            else:
+                index[each] = [i]
+        
+        nums = sorted(nums)
+        
+        i = 0
+        j = len(nums) - 1
+        
+        while(i<j):
+            if nums[i] + nums[j] < target:
+                i += 1
+            elif nums[i] + nums[j] > target:
+                j -= 1
+            else:
+                if nums[i] == nums[j]:
+                    return index[nums[i]]
+                else:
+                    return [index[nums[i]][0],index[nums[j]][0]]
+        
+        """
+        :type nums: List[int]
+        :type target: int
+        :rtype: List[int]
+        """
+        
